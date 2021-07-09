@@ -48,7 +48,8 @@ def talk(text):
     engine.runAndWait()
     
     
-    
+sender_email="sender's Email here" 
+password ="sender's email password here"  
     
     
 # -*-get_info() is for get information from the user with the help of microphone as primary source -*-
@@ -107,7 +108,7 @@ def get_email():
 def send_email(receiver, subject, message):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
-    server.login('Enter sender's email ID here ', 'demopassword')
+    server.login(sender_email, password)
     Email = email.message.EmailMessage()
     Email['From'] = "Rahul Khushwah"
     Email['To'] = receiver
@@ -128,7 +129,7 @@ def get_inbox():
     try:
        
         mail = imaplib.IMAP4_SSL("imap.gmail.com",993)
-        mail.login('enter email ID here','demopassword')
+        mail.login(sender_email,password)
         mail.select('inbox')
 
         data = mail.search(None, 'ALL')
